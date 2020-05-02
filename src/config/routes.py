@@ -1,0 +1,3 @@
+users = {
+    'index': "/usuarios",
+}
