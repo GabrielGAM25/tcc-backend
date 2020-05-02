@@ -6,4 +6,6 @@
 
 ## Setup instructions
 
+Run `pip install -r requirements.txt` to install required libraries
+
 Run `docker-compose up -d` to install PostgreSQL and PgAdmin4
