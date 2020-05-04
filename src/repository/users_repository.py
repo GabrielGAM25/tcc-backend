@@ -1,6 +1,6 @@
-from config.bcrypt import bcrypt
 from config.database import db
 from model.user import User
+
 
 class UsersRepository:
     @classmethod

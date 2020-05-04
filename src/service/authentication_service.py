@@ -1,5 +1,7 @@
 from repository.users_repository import UsersRepository
 from config.bcrypt import bcrypt
+
+
 class AuthenticationService:
     @classmethod
     def authenticate(cls, email, password):

@@ -2,6 +2,7 @@ from config.bcrypt import bcrypt
 from model.user import User
 from repository.users_repository import UsersRepository
 
+
 class UsersService:
     @classmethod
     def get_all_users(cls):
@@ -10,12 +11,13 @@ class UsersService:
     @classmethod
     def get_user_by_id(cls, user_id):
         return UsersRepository.get_user_by_id(user_id)
-    
+
     @classmethod
     def create_user(cls, user_data):
         name = user_data['name']
         email = user_data['email']
-        password = bcrypt.generate_password_hash(user_data['password']).decode('utf-8')
+        password = bcrypt.generate_password_hash(
+            user_data['password']).decode('utf-8')
         birth_date = user_data['birth_date']
 
         user = User(
