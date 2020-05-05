@@ -28,7 +28,7 @@ WITH (
 CREATE UNIQUE INDEX UNIQUE_email ON "user"("email")
 ;
 
-ALTER TABLE "user" ADD CONSTRAINT "Key5" PRIMARY KEY ("id")
+ALTER TABLE "user" ADD CONSTRAINT "PK_user" PRIMARY KEY ("id")
 ;
 
 -- Table exercise
@@ -43,7 +43,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "exercise" ADD CONSTRAINT "Key6" PRIMARY KEY ("id")
+ALTER TABLE "exercise" ADD CONSTRAINT "PK_exercise" PRIMARY KEY ("id")
 ;
 -- Table workout_plan
 
@@ -59,7 +59,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "workout_plan" ADD CONSTRAINT "Key7" PRIMARY KEY ("id","user_id")
+ALTER TABLE "workout_plan" ADD CONSTRAINT "PK_workout_plan" PRIMARY KEY ("id","user_id")
 ;
 -- Table assessment
 
@@ -89,7 +89,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "assessment" ADD CONSTRAINT "Key8" PRIMARY KEY ("id","user_id")
+ALTER TABLE "assessment" ADD CONSTRAINT "PK_assessment" PRIMARY KEY ("id","user_id")
 ;
 -- Table workout
 
@@ -105,7 +105,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "workout" ADD CONSTRAINT "Key14" PRIMARY KEY ("workout_plan_id","id","user_id")
+ALTER TABLE "workout" ADD CONSTRAINT "PK_workout" PRIMARY KEY ("workout_plan_id","id","user_id")
 ;
 -- Table muscle
 
@@ -118,7 +118,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "muscle" ADD CONSTRAINT "Key16" PRIMARY KEY ("id")
+ALTER TABLE "muscle" ADD CONSTRAINT "PK_muscle" PRIMARY KEY ("id")
 ;
 -- Table exercice_muscle
 
@@ -131,7 +131,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "exercice_muscle" ADD CONSTRAINT "Key18" PRIMARY KEY ("exercise_id","muscle_id")
+ALTER TABLE "exercice_muscle" ADD CONSTRAINT "PK_exercise_muscle" PRIMARY KEY ("exercise_id","muscle_id")
 ;
 -- Table equipment
 
@@ -144,7 +144,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "equipment" ADD CONSTRAINT "Key19" PRIMARY KEY ("id")
+ALTER TABLE "equipment" ADD CONSTRAINT "PK_equipment" PRIMARY KEY ("id")
 ;
 -- Table exercise_equipment
 
@@ -157,7 +157,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "exercise_equipment" ADD CONSTRAINT "Key20" PRIMARY KEY ("exercise_id","equipment_id")
+ALTER TABLE "exercise_equipment" ADD CONSTRAINT "PK_exercise_equipment" PRIMARY KEY ("exercise_id","equipment_id")
 ;
 -- Table activity
 
@@ -179,7 +179,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "activity" ADD CONSTRAINT "Key21" PRIMARY KEY ("exercise_id","equipment_id","workout_plan_id","workout_id","user_id","id")
+ALTER TABLE "activity" ADD CONSTRAINT "PK_activity" PRIMARY KEY ("exercise_id","equipment_id","workout_plan_id","workout_id","user_id","id")
 ;
 -- Table goal
 
@@ -193,7 +193,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "goal" ADD CONSTRAINT "Key22" PRIMARY KEY ("id")
+ALTER TABLE "goal" ADD CONSTRAINT "PK_goal" PRIMARY KEY ("id")
 ;
 -- Table workout_plan_goal
 
@@ -207,7 +207,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "workout_plan_goal" ADD CONSTRAINT "Key23" PRIMARY KEY ("id_goal","workout_plan_id","user_id")
+ALTER TABLE "workout_plan_goal" ADD CONSTRAINT "PK_workout_plan_goal" PRIMARY KEY ("id_goal","workout_plan_id","user_id")
 ;
 -- Table activity_day
 
@@ -227,7 +227,7 @@ WITH (
   autovacuum_enabled=true)
 ;
 
-ALTER TABLE "activity_day" ADD CONSTRAINT "Key24" PRIMARY KEY ("exercise_id","equipment_number","id","workout_plan_id","workout_id","user_id","activity_id")
+ALTER TABLE "activity_day" ADD CONSTRAINT "PK_activity_day" PRIMARY KEY ("exercise_id","equipment_number","id","workout_plan_id","workout_id","user_id","activity_id")
 ;
 -- Table exercise_category
 
@@ -264,7 +264,7 @@ ALTER TABLE "activities_modifiers" ADD CONSTRAINT "PK_activities_modifiers" PRIM
 ;
 -- Create foreign keys (relationships) section ------------------------------------------------- 
 
-ALTER TABLE "workout" ADD CONSTRAINT "Relationship17" FOREIGN KEY ("workout_plan_id", "user_id") REFERENCES "workout_plan" ("id", "user_id") ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE "workout" ADD CONSTRAINT "FK_workout" FOREIGN KEY ("workout_plan_id", "user_id") REFERENCES "workout_plan" ("id", "user_id") ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 ALTER TABLE "exercice_muscle" ADD FOREIGN KEY ("exercise_id") REFERENCES "exercise" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -276,7 +276,7 @@ ALTER TABLE "exercice_muscle" ADD FOREIGN KEY ("muscle_id") REFERENCES "muscle" 
 ALTER TABLE "exercise_equipment" ADD FOREIGN KEY ("exercise_id") REFERENCES "exercise" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE "exercise_equipment" ADD CONSTRAINT "Relationship24" FOREIGN KEY ("equipment_id") REFERENCES "equipment" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE "exercise_equipment" ADD CONSTRAINT "FK_exercise_equipment" FOREIGN KEY ("equipment_id") REFERENCES "equipment" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 ALTER TABLE "activity" ADD FOREIGN KEY ("exercise_id", "equipment_id") REFERENCES "exercise_equipment" ("exercise_id", "equipment_id") ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -288,7 +288,7 @@ ALTER TABLE "activity" ADD FOREIGN KEY ("workout_plan_id", "workout_id", "user_i
 ALTER TABLE "workout_plan_goal" ADD FOREIGN KEY ("id_goal") REFERENCES "goal" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE "activity_day" ADD CONSTRAINT "Relationship29" FOREIGN KEY ("exercise_id", "equipment_number", "workout_plan_id", "workout_id", "user_id", "activity_id") REFERENCES "activity" ("exercise_id", "equipment_id", "workout_plan_id", "workout_id", "user_id", "id") ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE "activity_day" ADD CONSTRAINT "FK_activity_day" FOREIGN KEY ("exercise_id", "equipment_number", "workout_plan_id", "workout_id", "user_id", "activity_id") REFERENCES "activity" ("exercise_id", "equipment_id", "workout_plan_id", "workout_id", "user_id", "id") ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 ALTER TABLE "activities_modifiers" ADD FOREIGN KEY ("exercise_id", "equipment_id", "workout_plan_id", "workout_id", "user_id", "activity_id") REFERENCES "activity" ("exercise_id", "equipment_id", "workout_plan_id", "workout_id", "user_id", "id") ON DELETE NO ACTION ON UPDATE NO ACTION
