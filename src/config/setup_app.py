@@ -1,4 +1,7 @@
+from flask_cors import CORS
+
 from controller.api_controller import register_controllers
+
 
 from .jwt import setup_jwt
 from .bcrypt import setup_bcrypt
@@ -11,3 +14,4 @@ def setup_app(app):
     setup_bcrypt(app)
     register_controllers(app)
     setup_jwt(app)
+    CORS(app)
