@@ -4,10 +4,12 @@ autopep8==1.5.2
 bcrypt==3.1.7
 cffi==1.14.0
 click==7.1.2
+colorama==0.4.3
 Flask==1.1.2
 Flask-Bcrypt==0.7.1
 Flask-Cors==3.0.8
 Flask-JWT==0.3.2
+Flask-Script==2.0.6
 Flask-SQLAlchemy==2.4.1
 future==0.18.2
 git-pylint-commit-hook==2.5.1

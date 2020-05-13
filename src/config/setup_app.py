@@ -2,7 +2,6 @@ from flask_cors import CORS
 
 from controller.api_controller import register_controllers
 
-
 from .database import setup_database
 from .bcrypt import setup_bcrypt
 from .jwt import setup_jwt
@@ -22,7 +21,7 @@ def setup_app(app):
     register_controllers(app)
 
     # Setup JWT for user authentication
-    app.config['SECRET_KEY'] = 'super-secret'
+    app.config['SECRET_KEY'] = 'jamal`s-super-secret'
     setup_jwt(app)
 
     # Fixes CORS issues

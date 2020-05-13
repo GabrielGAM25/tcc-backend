@@ -1,14 +1,14 @@
 from flask import jsonify
 
 from repository.users_repository import UsersRepository
-from config.bcrypt import bcrypt
+from config.bcrypt import check_password_hash
 
 
 class AuthenticationService:
     @classmethod
     def authenticate(cls, email, password):
         user = UsersRepository.get_user_by_email(email)
-        if user and bcrypt.check_password_hash(user.password, password):
+        if user and check_password_hash(user.password, password):
             return user
 
     @classmethod

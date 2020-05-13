@@ -5,12 +5,10 @@ from service.authentication_service import AuthenticationService
 from .routes import authentication as routes
 
 
-jwt = JWT(
-    None,
-    AuthenticationService.authenticate,
-    AuthenticationService.get_authenticated_user,
-)
+jwt = JWT()
 
+jwt.authentication_handler(AuthenticationService.authenticate)
+jwt.identity_handler(AuthenticationService.get_authenticated_user)
 jwt.auth_response_handler(AuthenticationService.login_response_handler)
 
 def setup_jwt(app):

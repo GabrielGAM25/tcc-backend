@@ -1,4 +1,4 @@
-from config.bcrypt import bcrypt
+from config.bcrypt import generate_password_hash
 from model.user import User
 from repository.users_repository import UsersRepository
 
@@ -16,8 +16,7 @@ class UsersService:
     def create_user(cls, user_data):
         name = user_data['name']
         email = user_data['email']
-        password = bcrypt.generate_password_hash(
-            user_data['password']).decode('utf-8')
+        password = generate_password_hash(user_data['password'])
         birth_date = user_data['birth_date']
 
         user = User(
