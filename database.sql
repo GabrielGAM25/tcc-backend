@@ -19,13 +19,11 @@ CREATE TABLE "user"
   "name" Character varying(50) NOT NULL,
   "password" Character varying NOT NULL,
   "email" Character varying(30) NOT NULL,
-  "birth_date" Date NOT NULL
+  "birth_date" Date NOT NULL,
+  UNIQUE("email")
 )
 WITH (
   autovacuum_enabled=true)
-;
-
-CREATE UNIQUE INDEX UNIQUE_email ON "user"("email")
 ;
 
 ALTER TABLE "user" ADD CONSTRAINT "PK_user" PRIMARY KEY ("id")

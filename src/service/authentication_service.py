@@ -1,3 +1,5 @@
+from flask import jsonify
+
 from repository.users_repository import UsersRepository
 from config.bcrypt import bcrypt
 
@@ -13,3 +15,10 @@ class AuthenticationService:
     def get_authenticated_user(cls, payload):
         user_id = payload['identity']
         return UsersRepository.get_user_by_id(user_id)
+
+    @classmethod
+    def login_response_handler(cls, access_token, user):
+        return jsonify({
+            'access_token': access_token.decode('utf-8'),
+            'user': user.serialize(),
+        })

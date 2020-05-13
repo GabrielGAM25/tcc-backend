@@ -9,12 +9,15 @@ from .jwt import setup_jwt
 
 
 def setup_app(app):
+    # Prevent the json parser from sorting response JSON keys
+    app.config['JSON_SORT_KEYS'] = False
+
     # Setup the connection to the database
     setup_database(app)
-    
+
     # Setup BCrypt for password handling
     setup_bcrypt(app)
-    
+
     # Register the API endpoints
     register_controllers(app)
 
