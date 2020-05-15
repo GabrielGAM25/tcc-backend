@@ -6,3 +6,7 @@ disable=
 
 load-plugins=
     pylint_flask_sqlalchemy,
+
+good-names=
+    id,
+    i
