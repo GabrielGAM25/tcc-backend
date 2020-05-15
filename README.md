@@ -2,6 +2,7 @@
 ## Required software
 
 [Python 3.8.2](https://www.python.org/)
+[Docker](https://docs.docker.com/get-docker/)
 
 ## Setup instructions
 
