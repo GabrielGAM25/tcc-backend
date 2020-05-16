@@ -11,3 +11,8 @@ authentication = {
     'prefix': '',
     'login': '/login',
 }
+
+assessments = {
+    'prefix': '/users/<int:user_id>/assessments',
+    'index': ''
+}
