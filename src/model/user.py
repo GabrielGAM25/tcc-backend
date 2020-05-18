@@ -4,9 +4,9 @@ from config.database import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50))
-    email = db.Column(db.String(30))
+    email = db.Column(db.String(30), unique=True)
     password = db.Column(db.String())
-    birth_date = db.Column(db.DateTime)
+    birth_date = db.Column(db.Date)
 
     def __init__(self, name, email, password, birth_date):
         self.name = name

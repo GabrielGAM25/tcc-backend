@@ -2,7 +2,8 @@ from random import randrange
 from datetime import timedelta
 
 def random_date(start, end):
-    delta = end - start
-    int_delta = (delta.days * 24 * 60 * 60) + delta.seconds
-    random_second = randrange(int_delta)
-    return start + timedelta(seconds=random_second)
+    days_delta = (end - start).days
+    random_number_of_days = randrange(days_delta)
+
+    random_date = start + timedelta(days=random_number_of_days)
+    return random_date
