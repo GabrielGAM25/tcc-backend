@@ -2,7 +2,7 @@ from colorama import Fore, Style
 
 from config.database import db
 from config.bcrypt import generate_password_hash
-from model import User
+from models import User
 
 
 def run():

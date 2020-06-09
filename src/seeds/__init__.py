@@ -1,7 +1,7 @@
 from colorama import Fore, Style
 
 from config.database import db
-from model.user import User
+from models.user import User
 
 from . import users_generator, assessments_generator
 

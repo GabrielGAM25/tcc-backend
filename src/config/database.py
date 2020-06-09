@@ -6,6 +6,7 @@ from .environment import POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_URL, POSTGRE
 db = SQLAlchemy()
 migrate = Migrate()
 
+
 def setup_database(app):
     db_url = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
         user=POSTGRES_USER, pw=POSTGRES_PASSWORD, url=POSTGRES_URL, db=POSTGRES_DB)

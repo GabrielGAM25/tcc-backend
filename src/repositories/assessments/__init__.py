@@ -1,0 +1,1 @@
+from .search_assessments_repository import SearchAssessmentsRepository
