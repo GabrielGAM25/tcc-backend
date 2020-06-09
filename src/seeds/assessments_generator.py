@@ -5,7 +5,7 @@ from sqlalchemy.sql import not_
 from config.database import db
 from utils.random import random_date
 from utils.date import date_string_to_date, add_months
-from model import User, Assessment
+from models import User, Assessment
 
 
 def run():
@@ -13,7 +13,7 @@ def run():
 
     felipe_id = User.query.with_entities(User.id).\
         filter_by(email='dpgoncalves.felipe@gmail.com').first()
-    
+
     jamal_id = User.query.with_entities(User.id).\
         filter_by(email='amarques.gabriel@gmail.com').first()
 

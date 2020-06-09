@@ -1,6 +1,6 @@
 from flask_cors import CORS
 
-from controller.api_controller import register_controllers
+from controllers.api_controller import register_controllers
 
 from .database import setup_database
 from .bcrypt import setup_bcrypt

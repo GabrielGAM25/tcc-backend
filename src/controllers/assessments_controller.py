@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, abort
 from flask_jwt import jwt_required
 
 from config.routes import assessments as routes
-from service.assessments_service import AssessmentsService
+from services.assessments import SearchAssessment
 
 blueprint = Blueprint('assessments', __name__)
 
@@ -13,5 +13,6 @@ def index(user_id):
     if user_id is None:
         abort(400)
 
-    assessments = AssessmentsService.get_user_assessments(user_id)
+    service = SearchAssessment()
+    assessments = service.get_user_assessments(user_id)
     return jsonify([assessment.serialize() for assessment in assessments])
