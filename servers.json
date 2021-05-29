@@ -1,13 +1,13 @@
 {
     "Servers": {
         "1": {
-            "Name": "TCC Local",
+            "Name": "Pullum Pristini",
             "Group": "Servers",
             "Port": 5432,
             "Username": "admin",
-            "Host": "tcc-postgres",
+            "Host": "pullum-pristini-postgres",
             "SSLMode": "prefer",
-            "MaintenanceDB": "tcc-database"
+            "MaintenanceDB": "dev-pullum-pristini"
         }
     }
 }

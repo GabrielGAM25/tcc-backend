@@ -1,12 +1,14 @@
 version: '3.6'
 
 services:
-  tcc-postgres:
+  pullum-pristini-postgres:
     env_file: .env
-    container_name: tcc-postgres
+    container_name: pullum-pristini-postgres
     image: postgres:9.4
     ports:
       - 5432:5432
+    volumes:
+      - "./postgresql-multi-db.sh:/docker-entrypoint-initdb.d/postgresql-multi-db.sh"
   pgadmin:
     env_file: .env
     container_name: pgadmin
@@ -14,8 +16,8 @@ services:
     ports:
       - 5050:80
     depends_on:
-      - tcc-postgres
+      - pullum-pristini-postgres
     volumes:
-      -  "./servers.json:/pgadmin4/servers.json"
+      - "./servers.json:/pgadmin4/servers.json"
     links:
-      - "tcc-postgres:tcc-postgres"
+      - "pullum-pristini-postgres:pullum-pristini-postgres"

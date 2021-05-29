@@ -7,7 +7,24 @@ from .bcrypt import setup_bcrypt
 from .jwt import setup_jwt
 
 
+def getEnvironmentConfig(app):
+    environment = app.config['ENV']
+
+    if(environment == 'development'):
+        app.config['DEBUG'] = True
+        app.config['TESTING'] = False
+    elif(environment == 'testing'):
+        app.config['DEBUG'] = True
+        app.config['TESTING'] = True
+    elif(environment == 'production'):
+        app.config['DEBUG'] = False
+        app.config['TESTING'] = False
+
+
 def setup_app(app):
+    # Set environment specific settings
+    getEnvironmentConfig(app)
+
     # Prevent the json parser from sorting response JSON keys
     app.config['JSON_SORT_KEYS'] = False
 

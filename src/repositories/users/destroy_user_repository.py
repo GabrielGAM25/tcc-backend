@@ -1,6 +1,8 @@
 from config.database import db
 from models import User
-from factories import UserFactory 
+from factories import UserFactory
+
+from .errors import UserNotFound
 
 
 class DestroyUserRepository:
@@ -8,5 +10,8 @@ class DestroyUserRepository:
         self.factory = factory
 
     def delete_user(self, user_id):
-        User.query.filter_by(id=user_id).delete()
+        deleted_user = User.query.filter_by(id=user_id).delete()
+
+        if not deleted_user:
+            raise UserNotFound
         db.session.commit()
