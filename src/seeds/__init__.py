@@ -1,9 +1,8 @@
 from colorama import Fore, Style
 
 from config.database import db
-from models.user import User
 
-from . import users_generator, assessments_generator
+from . import users_generator, assessments_generator, exercises_generator
 
 
 def clear_database():
@@ -21,3 +20,4 @@ def clear_database():
 def seed_database():
     users_generator.run()
     assessments_generator.run()
+    exercises_generator.run()

@@ -22,6 +22,7 @@ class UserEntity():
 
     def to_dictionary(self):
         return {
+            'id': self.id,
             'name': self.name,
             'email': self.email,
             'password': self.password,

@@ -16,3 +16,8 @@ assessments = {
     'prefix': '/users/<int:user_id>/assessments',
     'index': ''
 }
+
+exercises = {
+    'prefix': '/exercises',
+    'index': '',
+}
